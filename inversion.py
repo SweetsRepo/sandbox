@@ -28,11 +28,13 @@ def invert(i_dir:str, o_dir:str):
             inverted_image.save(o_dir +'/'+ f)
         except IsADirectoryError as e:
             pass
+        except OSError as e:
+            pass
 
 parser = argparse.ArgumentParser(description="Take in directory locations")
-parser.add_argument('-I', '--i_dir', type=str, nargs='?', default='./images/',
+parser.add_argument('-i', '--i_dir', type=str, nargs='?', default='./images/',
     action='store', help="Input directory to invert all images for")
-parser.add_argument('-O', '--o_dir', type=str, nargs='?',
+parser.add_argument('-o', '--o_dir', type=str, nargs='?',
     action='store', help="Output directory to place all inverted images in")
 
 args = parser.parse_args()
